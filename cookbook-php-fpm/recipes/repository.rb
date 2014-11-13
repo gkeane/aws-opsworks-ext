@@ -72,7 +72,7 @@ when 'debian'
   end
 
 when 'amazon', 'fedora', 'centos', 'redhat'
-  unless platform?('centos', 'redhat') && node['platform_version'].to_f >= 6.4
+  unless platform?('centos', 'redhat', 'amazon') && node['platform_version'].to_f >= 6.4
     yum_repository 'remi' do
       description 'Remi'
       url node['php-fpm']['yum_url']
