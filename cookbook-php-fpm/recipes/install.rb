@@ -18,7 +18,7 @@
 # limitations under the License.
 #
 
-include_recipe 'php-fpm::repository' unless node['php-fpm']['skip_repository_install']
+#include_recipe 'php-fpm::repository' unless node['php-fpm']['skip_repository_install']
 include_recipe 'apt::default' if node['platform_family'] == 'debian'
 
 if node['php-fpm']['package_name'].nil?
