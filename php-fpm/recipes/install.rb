@@ -48,17 +48,5 @@ end
 
 directory node['php-fpm']['log_dir']
 
-template node['php-fpm']['conf_file'] do
-  source "php-fpm.conf.erb"
-  mode 00644
-  owner "root"
-  group "root"
-  notifies :restart, "service[php-fpm]"
-end
 
-service "php-fpm" do
-  provider service_provider if service_provider
-  service_name php_fpm_service_name
-  supports :start => false, :stop => true, :restart => true, :reload => true
-  action [ :enable, :start ]
-end
+
