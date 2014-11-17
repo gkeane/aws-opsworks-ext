@@ -51,6 +51,22 @@ if node['platform'] == 'ubuntu' and node['platform_version'].to_f >= 13.10
   service_provider = ::Chef::Provider::Service::Upstart
 end
 
+if node['php-fpm']['package_name'].nil?
+  if platform_family?("rhel")
+    php_fpm_package_name = "php-fpm"
+  else
+    php_fpm_package_name = "php5-fpm"
+  end
+else
+  php_fpm_package_name = node['php-fpm']['package_name']
+end
+
+if node['php-fpm']['service_name'].nil?
+  php_fpm_service_name = php_fpm_package_name
+else
+  php_fpm_service_name = node['php-fpm']['service_name']
+end
+
 service "php-fpm" do
   provider service_provider if service_provider
   service_name php_fpm_service_name
