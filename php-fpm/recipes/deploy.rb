@@ -9,8 +9,8 @@ include_recipe 'nginx::service'
 node[:deploy].each do |application, deploy|
   # We're not using rails apps. This this will never be overridden in a php-fpm deploy as custom json. 
   # Ddd this to deploy, so that way we can make sure only this app is deployed.
-  unless defined?(deploy[:rails_env])
-    Chef::Log.debug("Skipping php-fpm::deploy application #{application} as it is not the application being deployed")
+  if deploy[:application_type] != 'php'
+    Chef::Log.debug("Skipping php-fpm::deploy application #{application} as it is not a php application")
     next
   else
     Chef::Log.debug("Deploying application #{application}.")
@@ -32,9 +32,9 @@ node[:deploy].each do |application, deploy|
     deploy_data deploy
   end
  
-  nginx_web_app application do
-    application deploy
-    cookbook deploy.has_key?("application_alias") ? deploy[:application_alias] : application
-  end
+  #nginx_web_app application do
+  #  application deploy
+  #  cookbook deploy.has_key?("application_alias") ? deploy[:application_alias] : application
+  #end
  
 end
