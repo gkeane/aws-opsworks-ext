@@ -32,9 +32,9 @@ node[:deploy].each do |application, deploy|
     deploy_data deploy
   end
  
-  #nginx_web_app application do
-  #  application deploy
+  nginx_web_app application do
+    application deploy
   #  cookbook deploy.has_key?("application_alias") ? deploy[:application_alias] : application
-  #end
+  end
  
 end
