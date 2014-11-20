@@ -4,8 +4,7 @@
 #
 
 include_recipe 'deploy'
-include_recipe "mod_php5_apache2"
-include_recipe "mod_php5_apache2::php"
+
 
 node[:deploy].each do |application, deploy|
   if deploy[:application_type] != 'php'
