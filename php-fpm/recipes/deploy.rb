@@ -6,8 +6,8 @@
 include_recipe 'deploy'
 include_recipe 'nginx::service'
 
-#default[:opsworks][:deploy_user][:user] = 'nginx'
-#default[:opsworks][:deploy_user][:group] = 'nginx'
+default[:opsworks][:deploy_user][:user] = 'nginx'
+default[:opsworks][:deploy_user][:group] = 'nginx'
  
 node[:deploy].each do |application, deploy|
   # We're not using rails apps. This this will never be overridden in a php-fpm deploy as custom json. 
@@ -25,8 +25,8 @@ node[:deploy].each do |application, deploy|
   end
  
   opsworks_deploy_dir do
-    user 'nginx'
-    group 'nginx'
+    user deploy[:user]
+    group deploy[:group]
     path deploy[:deploy_to]
   end
  
