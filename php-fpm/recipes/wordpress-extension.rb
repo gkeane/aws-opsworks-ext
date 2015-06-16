@@ -5,3 +5,4 @@ action :create do
     group    'root'
     mode     00644
   end
+end
