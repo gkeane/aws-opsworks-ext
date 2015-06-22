@@ -22,7 +22,7 @@ location ~ "^/wp-content/uploads/(.*)$" {
   try_files $uri @missing;
 }
 location @missing {
-  rewrite "^/wp-content/uploads/(.*)$" "<% node['wordpress_nginx']['s3_forward'] %>/$1" redirect;
+  rewrite "^/wp-content/uploads/(.*)$" "<% node[:wordpress_nginx][:s3_forward] %>/$1" redirect;
 }
 
   
