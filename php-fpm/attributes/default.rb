@@ -6,6 +6,7 @@ conf_file = "/etc/php-fpm.conf"
 error_log = "/var/log/php-fpm/error.log"
 pid = "/var/run/php-fpm/php-fpm.pid"
 
+default['wordpress_nginx']['s3_forward'] = 'https://s3.amazonaws.com/udextension/wp-content/uploads/'
 default['wordpress_nginx']['fastcgi_read_timeout'] = '3600s'
 default['wordpress_nginx']['static_file_expiry'] = '24h'
 
