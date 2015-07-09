@@ -31,6 +31,12 @@ node[:deploy].each do |application, deploy|
   opsworks_deploy do
     app application
     deploy_data deploy
+    template "/etc/nginx/global/wordpress.conf" do
+      source   'wordpress.erb'
+      owner    'root'
+      group    'root'
+      mode     00644
+    end
   end
  
   nginx_web_app application do
@@ -43,11 +49,5 @@ node[:deploy].each do |application, deploy|
     #end
   #  cookbook deploy.has_key?("application_alias") ? deploy[:application_alias] : application
   end
-    template "/etc/nginx/global/wordpress.conf" do
-      source   'wordpress.erb'
-      owner    'root'
-      group    'root'
-      mode     00644
-    end
- 
+
 end
