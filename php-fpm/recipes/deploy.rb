@@ -40,8 +40,8 @@ node[:deploy].each do |application, deploy|
   end
 
   node[:deploy].each do |application, deploy|
-    app_root = "#{deploy[:deploy_to]}/current/wp-content/uploads"
-    execute "chmod -R g+rw #{app_root}" do
+    app_root = "#{deploy[:deploy_to]}/current/wp-content"
+    execute "chown -R #{deploy[:user]}:#{deploy[:user]} #{app_root}" do
     end 
   end
   nginx_web_app application do
