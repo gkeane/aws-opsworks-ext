@@ -6,54 +6,21 @@ server {
    root   <%= @application[:absolute_document_root] %>;
   index index.php;
         include global/restrictions.conf;
-
-        # Additional rules go here.
-
-        # Only include one of the files below.
-        include global/wordpress.conf;
-        include global/restrictions.conf;
-}
-
-
-
   location / {
     root   <%= @application[:absolute_document_root] %>;
     try_files $uri $uri/ /index.php?$args;
     index  index.html index.htm index.php;
   }
-  
- location ~ \.php {
-     root   <%= @application[:absolute_document_root] %>;
-     fastcgi_pass   unix:/var/run/php-fpm-www.sock;
-     fastcgi_split_path_info ^(.+.php)(.*)$;
-     fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;
-     include        fastcgi_params;
- }
+        # Additional rules go here.
 
-location ~ "^/wp-content/uploads/(.*)$" {
-  try_files $uri @missing;
-}
-location @missing {
-  rewrite "^/wp-content/uploads/(.*)$" "<%= node[:wordpress_nginx][:s3_forward] %>/$1" redirect;
-}
+        # Only include one of the files below.
+        include global/wordpress.conf;
+        #include global/restrictions.conf;
+  location ~ "^/wp-content/uploads/(.*)$" {
+    try_files $uri @missing;
+  }
+  location @missing {
+    rewrite "^/wp-content/uploads/(.*)$" "<%= node[:wordpress_nginx][:s3_forward] %>/$1" redirect;
+  }
 
-  
-  # Block all svn access
-  if ($request_uri ~* ^.*\.svn.*$) {
-     return 404;
-  }
-  
-  # Block all git access
-  if ($request_uri ~* ^.*\.git.*$) {
-     return 404;
-  }
-  
-  location /nginx_status {
-    stub_status on;
-    access_log off;
-    allow 127.0.0.1;
-    deny all;
-  }
-  
 }
-
