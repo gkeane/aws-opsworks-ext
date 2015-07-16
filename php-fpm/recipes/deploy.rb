@@ -38,11 +38,12 @@ node[:deploy].each do |application, deploy|
       mode     00644
     end
   end
-  
-  app_root = "#{deploy[:deploy_to]}/current/wp-content/uploads"
-  execute "chmod -R g+rw #{app_root}" do
-  end 
 
+  node[:deploy].each do |application, deploy|
+    app_root = "#{deploy[:deploy_to]}/current/wp-content/uploads"
+    execute "chmod -R g+rw #{app_root}" do
+    end 
+  end
   nginx_web_app application do
     application deploy
   #  template "#{node['nginx']['dir']}/global/restrictions.conf" do
