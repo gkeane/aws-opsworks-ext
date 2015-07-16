@@ -41,7 +41,7 @@ node[:deploy].each do |application, deploy|
 
   node[:deploy].each do |application, deploy|
     app_root = "#{deploy[:deploy_to]}/current/wp-content"
-    user = deploy[:user]
+    user = nginx
     group = deploy[:group]
     execute "chown -R #{user}:#{group} #{app_root}" do
     end 
