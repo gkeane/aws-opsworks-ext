@@ -4,7 +4,7 @@ conf_dir = "/etc/php.d"
 pool_conf_dir = "/etc/php-fpm.d"
 conf_file = "/etc/php-fpm.conf"
 error_log = "/var/log/php-fpm/error.log"
-pid = "/var/run/php-fpm/php-fpm.pid"
+pid = "/var/run/php-fpm/php-fpm-5.6.pid"
 
 default['wordpress_nginx']['s3_forward'] = 'https://s3.amazonaws.com/udextension/wp-content/uploads'
 default['wordpress_nginx']['fastcgi_read_timeout'] = '3600s'
