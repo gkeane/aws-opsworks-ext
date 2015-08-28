@@ -27,7 +27,14 @@ node[:deploy].each do |application, deploy|
     group deploy[:group]
     path deploy[:deploy_to]
   end
- 
+    
+    directory "/etc/nginx/global/" do
+      mode 0755
+      owner 'root'
+      group 'root'
+      action :create
+    end 
+
     template "/etc/nginx/global/wordpress.conf" do
       source   'wordpress.erb'
       owner    'root'
