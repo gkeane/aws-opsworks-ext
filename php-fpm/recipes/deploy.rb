@@ -28,22 +28,18 @@ node[:deploy].each do |application, deploy|
     path deploy[:deploy_to]
   end
  
-  opsworks_deploy do
-    app application
-    deploy_data deploy
     template "/etc/nginx/global/wordpress.conf" do
       source   'wordpress.erb'
       owner    'root'
       group    'root'
       mode     00644
     end
-    template "/etc/nginx//global/restrictions.conf" do
+    template "/etc/nginx/global/restrictions.conf" do
       source   'restrictions.erb'
       owner    'root'
       group    'root'
       mode     00644
     end
-  end
 
   node[:deploy].each do |application, deploy|
     app_root = "#{deploy[:deploy_to]}/current/wp-content"
