@@ -1,8 +1,8 @@
 user = "nginx"
 group = "nginx"
 conf_dir = "/etc/php.d"
-pool_conf_dir = "/etc/php-fpm.d"
-conf_file = "/etc/php-fpm.conf"
+pool_conf_dir = "/etc/php-fpm-5.6.d"
+conf_file = "/etc/php-fpm-5.6.conf"
 error_log = "/var/log/php-fpm/error.log"
 pid = "/var/run/php-fpm/php-fpm-5.6.pid"
 
