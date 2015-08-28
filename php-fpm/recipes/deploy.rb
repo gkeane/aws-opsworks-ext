@@ -37,6 +37,12 @@ node[:deploy].each do |application, deploy|
       group    'root'
       mode     00644
     end
+    template "/etc/nginx//global/restrictions.conf" do
+      source   'restrictions.erb'
+      owner    'root'
+      group    'root'
+      mode     00644
+    end
   end
 
   node[:deploy].each do |application, deploy|
