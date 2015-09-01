@@ -30,21 +30,21 @@ node[:deploy].each do |application, deploy|
     
     directory "/etc/nginx/global/" do
       mode 0755
-      owner 'root'
-      group 'root'
+      owner 'nginx'
+      group 'nginx'
       action :create
     end 
 
     template "#{node[:nginx][:dir]}/global/wordpress.conf" do
       source   'wordpress.erb'
-      owner    'root'
-      group    'root'
+      owner    'nginx'
+      group    'nginx'
       mode     00644
     end
     template "#{node[:nginx][:dir]}/global/restrictions.conf" do
       source   'restrictions.erb'
-      owner    'root'
-      group    'root'
+      owner    'nginx'
+      group    'nginx'
       mode     00644
     end
 
