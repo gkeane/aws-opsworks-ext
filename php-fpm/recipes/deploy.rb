@@ -53,7 +53,7 @@ node[:deploy].each do |application, deploy|
     user = "nginx"
     group = deploy[:group]
     #execute "chown -R #{user}:#{group} #{app_root}" do
-    end 
+    #end 
   end
   nginx_web_app application do
     application deploy
