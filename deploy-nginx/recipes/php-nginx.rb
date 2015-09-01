@@ -18,19 +18,19 @@ node[:deploy].each do |application, deploy|
     path deploy[:deploy_to]
   end
 
-    directory "/etc/nginx/global/" do
-      mode 0755
-      owner 'nginx'
-      group 'nginx'
-      action :create
-    end 
+#    directory "/etc/nginx/global/" do
+#      mode 0755
+#      owner 'nginx'
+#      group 'nginx'
+#      action :create
+#    end 
 
-  template "#{node[:nginx][:dir]}/global/wordpress.conf" do
-    source   'wordpress.conf.erb'
-    owner    'nginx'
-    group    'nginx'
-    mode     00644
-  end
+#  template "#{node[:nginx][:dir]}/global/wordpress.conf" do
+#    source   'wordpress.conf.erb'
+#    owner    'nginx'
+#    group    'nginx'
+#    mode     00644
+#  end
 #    template "#{node[:nginx][:dir]}/global/restrictions.conf" do
 #      source   'restrictions.erb'
 #      owner    'nginx'

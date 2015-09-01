@@ -57,12 +57,12 @@ node[:deploy].each do |application, deploy|
   end
   nginx_web_app application do
     application deploy
-  #  template "#{node['nginx']['dir']}/global/restrictions.conf" do
-    #  source   'restrictions.erb'
-     # owner    'root'
-     # group    'root'
-      #mode     00644
-    #end
+    template "#{node['nginx']['dir']}/global/restrictions.conf" do
+      source   'restrictions.erb'
+      owner    'root'
+      group    'root'
+     mode     00644
+    end
   #  cookbook deploy.has_key?("application_alias") ? deploy[:application_alias] : application
   end
 
