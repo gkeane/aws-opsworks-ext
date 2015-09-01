@@ -41,12 +41,12 @@ node[:deploy].each do |application, deploy|
       group    'nginx'
       mode     00644
     end
-    template "#{node[:nginx][:dir]}/global/restrictions.conf" do
-      source   'restrictions.erb'
-      owner    'nginx'
-      group    'nginx'
-      mode     00644
-    end
+#    template "#{node[:nginx][:dir]}/global/restrictions.conf" do
+#      source   'restrictions.erb'
+#      owner    'nginx'
+#      group    'nginx'
+#      mode     00644
+#    end
 
   node[:deploy].each do |application, deploy|
     app_root = "#{deploy[:deploy_to]}/current/wp-content"
