@@ -35,13 +35,13 @@ node[:deploy].each do |application, deploy|
       action :create
     end 
 
-    template "/etc/nginx/global/wordpress.conf" do
+    template "#{node[:nginx][:dir]}/global/wordpress.conf" do
       source   'wordpress.erb'
       owner    'root'
       group    'root'
       mode     00644
     end
-    template "/etc/nginx/global/restrictions.conf" do
+    template "#{node[:nginx][:dir]}/global/restrictions.conf" do
       source   'restrictions.erb'
       owner    'root'
       group    'root'
