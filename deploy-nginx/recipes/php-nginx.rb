@@ -17,6 +17,18 @@ node[:deploy].each do |application, deploy|
     group deploy[:group]
     path deploy[:deploy_to]
   end
+  template "#{node[:nginx][:dir]}/global/wordpress.conf" do
+    source   'wordpress.conf.erb'
+    owner    'nginx'
+    group    'nginx'
+    mode     00644
+  end
+#    template "#{node[:nginx][:dir]}/global/restrictions.conf" do
+#      source   'restrictions.erb'
+#      owner    'nginx'
+#      group    'nginx'
+#      mode     00644
+#    end
 
   opsworks_deploy do
     deploy_data deploy
