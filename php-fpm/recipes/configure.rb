@@ -25,6 +25,12 @@ template node['php-fpm']['conf_file'] do
   group "root"
   notifies :restart, "service[php-fpm]"
 end
+template "#{node[:nginx][:dir]}/global/wordpress.conf" do
+      source   'wordpress.erb'
+     owner    'nginx'
+     group    'nginx'
+     mode     00644
+   end
 
 php_fpm_pool 'www' do
   enable false
