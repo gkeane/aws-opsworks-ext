@@ -48,13 +48,7 @@ node[:deploy].each do |application, deploy|
 #      mode     00644
 #    end
 
-  node[:deploy].each do |application, deploy|
-    app_root = "#{deploy[:deploy_to]}/current/wp-content"
-    user = "nginx"
-    group = deploy[:group]
-    execute "chown -R #{user}:#{group} #{app_root}" do
-    end 
-  end
+
   nginx_web_app application do
     template "#{node[:nginx][:dir]}/global/wordpress.conf" do
       source   'wordpress.erb'
@@ -70,6 +64,14 @@ node[:deploy].each do |application, deploy|
   #   mode     00644
   #  end
   #  cookbook deploy.has_key?("application_alias") ? deploy[:application_alias] : application
+  end
+
+    node[:deploy].each do |application, deploy|
+    app_root = "#{deploy[:deploy_to]}/current/wp-content"
+    user = "nginx"
+    group = deploy[:group]
+    execute "chown -R #{user}:#{group} #{app_root}" do
+    end 
   end
 
 end
