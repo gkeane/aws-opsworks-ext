@@ -51,7 +51,7 @@ node[:deploy].each do |application, deploy|
 
   nginx_web_app application do
     template "#{node[:nginx][:dir]}/global/wordpress.conf" do
-      source   'wordpress.erb'
+      source   'wordpress.conf.erb'
       owner    'nginx'
       group    'nginx'
       mode     00644
