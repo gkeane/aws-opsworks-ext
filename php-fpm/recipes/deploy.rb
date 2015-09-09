@@ -63,15 +63,15 @@ node[:deploy].each do |application, deploy|
   #    group    'root'
   #   mode     00644
   #  end
-  #  cookbook deploy.has_key?("application_alias") ? deploy[:application_alias] : application
+  #cookbook deploy.has_key?("application_alias") ? deploy[:application_alias] : application
   end
 
-    node[:deploy].each do |application, deploy|
-    app_root = "#{deploy[:deploy_to]}/current/wp-content"
-    user = "nginx"
-    group = deploy[:group]
-    execute "chown -R #{user}:#{group} #{app_root}" do
-    end 
-  end
+    #node[:deploy].each do |application, deploy|
+   # app_root = "#{deploy[:deploy_to]}/current/wp-content"
+   # user = "nginx"
+   # group = deploy[:group]
+   # execute "chown -R #{user}:#{group} #{app_root}" do
+   # end 
+  #end
 
 end
