@@ -5,7 +5,7 @@ server {
   error_log  <%= node[:nginx][:log_dir] %>/<%= @application[:domains].first %>.error.log;
    root   <%= @application[:absolute_document_root] %>;
   index index.php;
-        include global/restrictions.conf;
+  #include global/restrictions.conf;
   location / {
     root   <%= @application[:absolute_document_root] %>;
     try_files $uri $uri/ /index.php?$args;
@@ -23,7 +23,7 @@ server {
         # Additional rules go here.
 
         # Only include one of the files below.
-        include global/wordpress.conf;
+        #include global/wordpress.conf;
         #include global/restrictions.conf;
 
 }

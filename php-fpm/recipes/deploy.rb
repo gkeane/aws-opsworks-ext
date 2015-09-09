@@ -50,12 +50,12 @@ node[:deploy].each do |application, deploy|
 
 
   nginx_web_app application do
-    template "#{node[:nginx][:dir]}/global/wordpress.conf" do
-      source   'wordpress.erb'
-      owner    'nginx'
-      group    'nginx'
-      mode     00644
-    end
+    #template "#{node[:nginx][:dir]}/global/wordpress.conf" do
+      #source   'wordpress.erb'
+      #owner    'nginx'
+      #group    'nginx'
+      #mode     00644
+    #end
     application deploy
   #  template "#{node['nginx']['dir']}/global/restrictions.conf" do
   #    source   'restrictions.erb'
