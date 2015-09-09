@@ -41,11 +41,11 @@ location ~* \.(js|css|png|jpg|jpeg|gif|ico)$ {
 #}
 
 #avoid php readfile()
-location ^~ /blogs.dir {
-        internal;
-        alias<%= @application[:absolute_document_root] %>/wp-content/blogs.dir ;
-        access_log off; log_not_found off;      expires max;
-}
+#location ^~ /blogs.dir {
+#        internal;
+#        alias<%= @application[:absolute_document_root] %>wp-content/blogs.dir ;
+#        access_log off; log_not_found off;      expires max;
+#}
 location / {
   index index.php;
   try_files $uri $uri/ /index.php?$args;
