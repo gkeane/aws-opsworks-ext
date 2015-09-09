@@ -27,7 +27,11 @@ node[:deploy].each do |application, deploy|
     group deploy[:group]
     path deploy[:deploy_to]
   end
-    
+  opsworks_deploy do
+    app application
+    deploy_data deploy
+  end
+
     directory "/etc/nginx/global/" do
       mode 0755
       owner 'nginx'
