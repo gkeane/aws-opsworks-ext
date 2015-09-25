@@ -11,3 +11,10 @@ package 'php-pecl-memcache' do
     'debian' => 'php-pecl-memcache'
   )
 end
+
+package 'php-gd' do
+  package_name value_for_platform_family(
+    'rhel' => 'php56-gd',
+    'debian' => 'php-gd'
+  )
+end
