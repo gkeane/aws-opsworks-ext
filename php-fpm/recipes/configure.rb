@@ -26,7 +26,7 @@ template node['php-fpm']['conf_file'] do
   notifies :restart, "service[php-fpm]"
 end
 
-template /etc/php.ini do
+template '/etc/php.ini' do
   source "php.conf.erb"
   mode 00644
   owner "root"
