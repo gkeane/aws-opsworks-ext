@@ -4,3 +4,10 @@ package 'php-pecl-memcached' do
     'debian' => 'php-pecl-memcached'
   )
 end
+
+package 'php-pecl-memcache' do
+  package_name value_for_platform_family(
+    'rhel' => 'php56-pecl-memcache',
+    'debian' => 'php-pecl-memcache'
+  )
+end
