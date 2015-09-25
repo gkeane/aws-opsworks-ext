@@ -26,6 +26,14 @@ template node['php-fpm']['conf_file'] do
   notifies :restart, "service[php-fpm]"
 end
 
+template /etc/php.ini do
+  source "php.conf.erb"
+  mode 00644
+  owner "root"
+  group "root"
+  notifies :restart, "service[php-fpm]"
+end
+
 php_fpm_pool 'www' do
   enable false
 end
