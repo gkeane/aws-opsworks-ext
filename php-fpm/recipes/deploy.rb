@@ -39,6 +39,7 @@ node[:deploy].each do |application, deploy|
       owner    'root'
       group    'root'
       mode     00644
+      notifies :restart, "service[php-fpm]"
     end
 
   node[:deploy].each do |application, deploy|
