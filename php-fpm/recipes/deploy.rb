@@ -28,6 +28,11 @@ node[:deploy].each do |application, deploy|
     path deploy[:deploy_to]
   end
  
+   opsworks_deploy do
+    app application
+    deploy_data deploy
+  end
+  
     template "/etc/nginx/global/wordpress.conf" do
       source   'wordpress.erb'
       owner    'root'
