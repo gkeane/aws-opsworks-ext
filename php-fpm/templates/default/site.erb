@@ -24,6 +24,13 @@ server {
     rewrite "^/wp-content/uploads/(.*)$" "<%= node[:wordpress_nginx][:s3_forward] %>/$1" redirect;
   }
 
+  location ~ "^/sussexconnection/files/(.*)$" {
+    try_files $uri @missing2;
+  }
+  location @missing2 {
+    rewrite "^/sussexconnection/files/(.*)$" "https://cdn.extension.udel.edu/sussexconnection/files/files/$1" redirect;
+  }
+
 
         # Additional rules go here.
 
