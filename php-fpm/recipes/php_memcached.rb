@@ -18,3 +18,11 @@ package 'php-gd' do
     'debian' => 'php-gd'
   )
 end
+
+package 'php-opcache' do
+  package_name value_for_platform_family(
+    'rhel' => 'php56-opcache',
+    'debian' => 'php-gd'
+  )
+end
+
