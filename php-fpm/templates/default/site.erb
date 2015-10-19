@@ -26,6 +26,14 @@ server {
    fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
    fastcgi_pass unix:/var/run/php-fpm-www.sock;
   }
+  location = /apc-nrp.php {
+   access_log off;
+   allow 127.0.0.1;
+   deny all;
+   include fastcgi_params;
+   fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+   fastcgi_pass unix:/var/run/php-fpm-www.sock;
+  }
   
   location / {
     root   <%= @application[:absolute_document_root] %>;
