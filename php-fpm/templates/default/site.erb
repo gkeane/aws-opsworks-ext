@@ -13,6 +13,10 @@ server {
    root   <%= @application[:absolute_document_root] %>;
   index index.php;
   include global/restrictions.conf;
+# Redirect wp-admin and wp-login requests to HTTPS.
+  location ~ /wp-(?:admin|login) {
+    return 301 https://$host$request_uri;
+  }
   location = /nginx_stub_status {
    stub_status on;
    allow 127.0.0.1;
