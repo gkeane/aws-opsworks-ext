@@ -8,7 +8,7 @@ pid = "/var/run/php-fpm/php-fpm-5.6.pid"
 
 default['wordpress_nginx']['s3_forward'] = 'https://s3.amazonaws.com/udextension/wp-content/uploads'
 default['wordpress_nginx']['fastcgi_read_timeout'] = '3600s'
-default['wordpress_nginx']['static_file_expiry'] = '72h'
+default['wordpress_nginx']['static_file_expiry'] = '7d'
 
 default['php-fpm']['user'] = user
 default['php-fpm']['group'] = group
