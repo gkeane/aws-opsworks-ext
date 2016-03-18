@@ -57,6 +57,7 @@ node[:deploy].each do |application, deploy|
     group = deploy[:group]
     execute "chown -R #{user}:#{group} #{app_root}" do
     end 
+    notifies :reload, "service[php-fpm]", :immediately
   end
   nginx_web_app application do
     application deploy
