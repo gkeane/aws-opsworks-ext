@@ -5,6 +5,7 @@
  
 include_recipe 'deploy'
 include_recipe 'nginx::service'
+include_recipe 'php-fpm'
 
  
 node[:deploy].each do |application, deploy|
@@ -60,7 +61,6 @@ node[:deploy].each do |application, deploy|
   end
   nginx_web_app application do
     application deploy
-    notifies :restart, "service[php-fpm]", :immediately
   #  template "#{node['nginx']['dir']}/global/restrictions.conf" do
     #  source   'restrictions.erb'
      # owner    'root'
@@ -70,4 +70,8 @@ node[:deploy].each do |application, deploy|
   #  cookbook deploy.has_key?("application_alias") ? deploy[:application_alias] : application
   end
 
+  execute 'trigger php-fpm service restart' do
+      command '/bin/true'
+      notifies :restart, "service[php-fpm]"
+  end
 end
