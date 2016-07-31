@@ -3,7 +3,7 @@ source "https://supermarket.getchef.com"
 
 
 cookbook "yum"
-
+cookbook 'build-essential', '= 3.2.0'
 
 source "https://api.berkshelf.com" 
  
