@@ -5,6 +5,7 @@ source "https://supermarket.getchef.com"
 cookbook "yum"
 cookbook 'build-essential', '= 3.2.0'
 cookbook 'iptables', '= 1.1.0'
+cookbook 'apt', '= 3.0.0'
 
 source "https://api.berkshelf.com" 
  
