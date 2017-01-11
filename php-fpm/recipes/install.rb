@@ -23,9 +23,9 @@ include_recipe 'apt::default' if node['platform_family'] == 'debian'
 
 if node['php-fpm']['package_name'].nil?
   if platform_family?("rhel")
-    php_fpm_package_name = "php7-fpm"
+    php_fpm_package_name = "php70-fpm"
   else
-    php_fpm_package_name = "php7-fpm"
+    php_fpm_package_name = "php70-fpm"
   end
 else
   php_fpm_package_name = node['php-fpm']['package_name']
