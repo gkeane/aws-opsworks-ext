@@ -61,9 +61,9 @@ end
 
 if node['php-fpm']['package_name'].nil?
   if platform_family?("rhel")
-    php_fpm_package_name = "php-fpm"
+    php_fpm_package_name = "php7-fpm"
   else
-    php_fpm_package_name = "php5-fpm"
+    php_fpm_package_name = "php7-fpm"
   end
 else
   php_fpm_package_name = node['php-fpm']['package_name']
