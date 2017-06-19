@@ -9,6 +9,7 @@ cookbook 'build-essential', '= 3.2.0'
 cookbook 'iptables', '= 1.1.0'
 cookbook 'apt', '= 3.0.0'
 cookbook 'poise', '= 2.7.2'
+cookbook 'poise-pyton', '=1.5.1'
 
 source "https://api.berkshelf.com" 
  
