@@ -12,3 +12,4 @@ cookbook 'apt', '= 3.0.0'
 source "https://api.berkshelf.com" 
  
 cookbook "newrelic", git: 'git://github.com/djoos-cookbooks/newrelic.git', ref: "2.26.0"
+cookbook "newrelic_meetme_plugin", git: 'git://github.com/gkeane/newrelic_meetme_plugin.git'
