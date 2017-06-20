@@ -11,6 +11,7 @@ cookbook 'apt', '= 3.0.0'
 cookbook 'poise', '= 2.7.2'
 cookbook 'poise-python', '=1.5.1'
 cookbook 'halite', '=1.6.0'
+cookbook 'newrelic', '=2.26.0'
 
 source "https://api.berkshelf.com" 
  
