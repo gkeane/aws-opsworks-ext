@@ -8,7 +8,6 @@ cookbook 'yum-epel', '= 0.7.1'
 cookbook 'build-essential', '= 3.2.0'
 cookbook 'iptables', '= 1.1.0'
 cookbook 'apt', '= 3.0.0'
-cookbook 'halite', '=1.6.0'
 cookbook 'newrelic', '=2.26.0'
 
 source "https://api.berkshelf.com" 
