@@ -11,6 +11,11 @@ server {
   access_log  <%= node[:nginx][:log_dir] %>/<%= @application[:domains].first %>.access.log;
   error_log  <%= node[:nginx][:log_dir] %>/<%= @application[:domains].first %>.error.log;
    root   <%= @application[:absolute_document_root] %>;
+  gzip on;
+  gzip_min_length  1100;
+  gzip_buffers  4 32k;
+  gzip_types    text/plain application/x-javascript text/xml text/css;
+  gzip_vary on;
   index index.php;
   include global/restrictions.conf;
 # Redirect wp-admin and wp-login requests to HTTPS.
@@ -68,6 +73,11 @@ server {
   server_name  <%= @application[:domains].join(" ") %> <%= node[:hostname] %>;
   access_log  <%= node[:nginx][:log_dir] %>/<%= @application[:domains].first %>.ssl.access.log;
   error_log  <%= node[:nginx][:log_dir] %>/<%= @application[:domains].first %>.ssl.error.log;
+  gzip on;
+  gzip_min_length  1100;
+  gzip_buffers  4 32k;
+  gzip_types    text/plain application/x-javascript text/xml text/css;
+  gzip_vary on;
   ssl on;
   ssl_certificate <%= node[:nginx][:dir] %>/ssl/<%= @application[:domains].first %>.crt;
   ssl_certificate_key <%= node[:nginx][:dir] %>/ssl/<%= @application[:domains].first %>.key;
