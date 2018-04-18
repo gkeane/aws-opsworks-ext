@@ -38,6 +38,9 @@ server {
    fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
    fastcgi_pass unix:/var/run/php-fpm-www.sock;
   }
+  location ~* \.(eot|otf|ttf|woff|woff2)$ {
+      add_header Access-Control-Allow-Origin *;
+  }
   location / {
     root   <%= @application[:absolute_document_root] %>;
     try_files $uri $uri/ /index.php?$args;
@@ -81,6 +84,9 @@ server {
    stub_status on;
    allow 127.0.0.1;
    deny all;
+  }
+  location ~* \.(eot|otf|ttf|woff|woff2)$ {
+      add_header Access-Control-Allow-Origin *;
   }
   location = /status {
    access_log off;
